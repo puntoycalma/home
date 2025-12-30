@@ -28,20 +28,56 @@ function updateCarousel() {
     track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
 }
 
-// Next
+// NEXT
 nextButton.addEventListener('click', () => {
     if (slides.length === 0) return;
     currentIndex = (currentIndex + 1) % slides.length;
     updateCarousel();
 });
 
-// Previous
+// PREVIOUS
 prevButton.addEventListener('click', () => {
     if (slides.length === 0) return;
     currentIndex = (currentIndex - 1 + slides.length) % slides.length;
     updateCarousel();
 });
 
-// Scroll suave y responsive
+// RESPONSIVE
 window.addEventListener('resize', updateCarousel);
 updateCarousel();
+
+/* =========================
+   SWIPE / TOUCH SUPPORT
+   ========================= */
+
+let startX = 0;
+let endX = 0;
+const threshold = 50; // distancia mínima para cambiar slide
+
+const carousel = document.querySelector('.carousel');
+
+carousel.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+}, { passive: true });
+
+carousel.addEventListener('touchmove', (e) => {
+    endX = e.touches[0].clientX;
+}, { passive: true });
+
+carousel.addEventListener('touchend', () => {
+    const diff = startX - endX;
+
+    if (Math.abs(diff) > threshold) {
+        if (diff > 0) {
+            // swipe izquierda → siguiente
+            currentIndex = (currentIndex + 1) % slides.length;
+        } else {
+            // swipe derecha → anterior
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        }
+        updateCarousel();
+    }
+
+    startX = 0;
+    endX = 0;
+});
