@@ -10,14 +10,18 @@ function updateCarousel() {
     track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
 }
 
+// Next
 nextButton.addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % slides.length;
     updateCarousel();
 });
 
+// Previous
 prevButton.addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + slides.length) % slides.length;
     updateCarousel();
 });
 
+// Scroll suave y responsive
 window.addEventListener('resize', updateCarousel);
+updateCarousel();
