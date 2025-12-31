@@ -9,7 +9,9 @@ let currentIndex = 0;
 const images = [
     "producto1.jpg",
     "producto2.jpg",
-    "producto3.jpg"
+    "producto3.jpg",
+    "producto4.jpg",
+    "producto5.jpg"
 ];
 
 // Crear elementos <img> dinámicamente
