@@ -65,7 +65,7 @@ body {
 
 .carousel-track {
     display: flex;
-    transition: transform 0.6s ease; /* transición suave */
+    transition: transform 0.9s ease; /* transición suave */
 }
 
 .carousel img {
@@ -167,7 +167,7 @@ footer {
     color: var(--accent);
     text-decoration: none;
     font-weight: 600;
-    transition: color 0.3s ease;
+    transition: color 0.5s ease;
 }
 
 .contact a:hover {
@@ -211,4 +211,63 @@ footer {
         font-size: 1rem;
         padding: 0.2rem 0.4rem;
     }
+}
+/* HERO BRANDING */
+.hero-isotipo {
+    width: 70px;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.hero-logo {
+    max-width: 320px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+    .hero-isotipo {
+        width: 55px;
+    }
+
+    .hero-logo {
+        max-width: 260px;
+    }
+}
+.hero-isotipo,
+.hero-logo,
+.claim {
+    animation: fadeIn 2.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.hero-sello {
+    width: 38px;
+    margin-top: 1.2rem;
+    opacity: 0.7;
+}
+.section-separator {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0;
+}
+
+.section-separator img {
+    width: 45px;
+    opacity: 0.2;
+}
+    .footer-isotipo {
+    width: 32px;
+    margin-bottom: 0.5rem;
+    opacity: 0.6;
 }
